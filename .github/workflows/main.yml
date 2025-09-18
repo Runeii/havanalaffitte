@@ -1,38 +1,30 @@
-name: Deploy to Server via FTP
+name: Deploy to Server via SFTP
+
 on:
   push:
-    tags:
-      - '*'
-    branches:
-      - main
+    branches: [ main ]
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
     
-    
-    - name: Deploy to server via FTP
+    - name: Deploy to server via SFTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        protocol: ftps
-        port: 21
-        local-dir: ./
+        protocol: sftp
         server-dir: /var/www/html/
         exclude: |
           **/.git*
           **/.git*/**
-          **/.env*
-          **/.github/**
-        
-    - name: Deployment completed
-      run: |
-        echo "✅ Deployment completed successfully!"
-        echo "Tag: ${{ github.ref_name }}"
-        echo "Commit: ${{ github.sha }}"
+          **/node_modules/**
+          .github/
+          README.md
+          .gitignore
