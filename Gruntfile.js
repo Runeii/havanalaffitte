@@ -23,7 +23,7 @@ module.exports = function(grunt) {
         },
 
         // Compile Sass to CSS
-        sass: {
+        ['dart-sass']: {
             dist: {
                 options: {
                     style: 'compressed'
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
             },
             css: {
                 files: ['scss/**/*.scss'],
-                tasks: ['sass', 'postcss'],
+                tasks: ['dart-sass', 'postcss'],
                 options: {
                     spawn: false,
                 }
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
     // Load project plugins
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-dart-sass');
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
@@ -79,8 +79,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
         'concat',
         'uglify',
-        'sass',
+        'dart-sass',
         'postcss',
-        'watch'
     ]);
 };
