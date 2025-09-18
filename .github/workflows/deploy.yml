@@ -1,4 +1,4 @@
-name: Deploy to Server via SFTP
+name: Deploy to Server via rsync
 on:
   push:
     branches: [ main ]
@@ -14,7 +14,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # or your preferred Node.js version
+          node-version: '18'
           cache: 'npm'
       
       - name: Install dependencies
@@ -23,13 +23,12 @@ jobs:
       - name: Build project
         run: npm run build
       
-      - name: Deploy to server via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+      - name: Deploy to server via rsync
+        uses: burnett01/rsync-deployments@6.0.0
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local_path: './*'
-          remote_path: '/var/www/html/'
-          sftpArgs: '-o ConnectTimeout=5'
-          rsyncArgs: '--archive --verbose --compress --delete --exclude=node_modules/ --exclude=.git/ --exclude=.github/'
+          switches: -avzr --delete --exclude=node_modules/ --exclude=.git/ --exclude=.github/ --exclude=package-lock.json
+          path: ./
+          remote_path: /var/www/havanalaffitte/
+          remote_host: ${{ secrets.FTP_SERVER }}
+          remote_user: ${{ secrets.FTP_USERNAME }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
