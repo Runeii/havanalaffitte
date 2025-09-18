@@ -1,0 +1,48 @@
+<header id="site_header">
+	<div class="container-fluid">
+		<div class="row hidden-md hidden-lg hidden-xl" id="mob_menu">
+			<div class="col-xs-12 text-center">
+				<ul>
+					{% if entry.slug == 'homepage' %}
+						<li><a class="scroll" href="#work">Archive</a></li>
+					{% else %}
+						<li><a href="{{ siteUrl }}#work">Archive</a></li>
+					{% endif %}
+					<li><a href="{{ siteUrl }}information">Information</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4{% if entry.slug == 'homepage' %} logo{% endif %}">
+				<h1 class="no-margin"><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
+			</div>
+			<div class="col-xs-4 hidden-md hidden-lg hidden-xl text-center mob-menu">
+				<span id="toggle_menu">Menu</span>
+			</div>
+			<div class="col-xs-4 hidden-xs hidden-sm text-center menu">
+				<ul>
+					<li>
+						{% if entry.slug == 'homepage' %}
+						<a href="#work" class="scroll">Archive</a>
+						<ul class="sub-menu">
+							{% set cats = craft.categories.group('category').find() %}
+							{% for cat in cats %}
+								<li><a data-cat="{{ cat.slug }}" href="{{ cat.url }}">{{ cat.title }}</a></li>
+							{% endfor %}
+							<li><a data-cat="all" class="active" href="{{ siteUrl }}">All</a></li>
+						</ul>
+						{% else %}
+						<a href="{{ siteUrl }}#work">Archive</a>
+						{% endif %}
+					</li>
+					<li>
+						<a href="{{ siteUrl }}information">Information</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-xs-4 text-right">
+				<a target="_blank" href="{{ siteMeta.instagramUrl }}">Instagram</a>
+			</div>
+		</div>
+	</div>
+</header>

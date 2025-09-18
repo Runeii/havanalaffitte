@@ -1,0 +1,29 @@
+//Slideshow
+#slideshow {
+	position: relative;
+
+	.slide_image {
+		height: calc(100vh - 44px);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-color: $white;
+
+		@include breakpoint(phablet) {
+			height: 100vh;
+		}
+	}
+
+	.title {
+		position: absolute;
+		top: 50%;
+		left: 0px;
+		width: 100%;
+		transform: translate(0px,-50%);
+		z-index: 10;
+		transition: color 1s ease;
+
+		&.white {
+			color: $white;
+		}
+	}
+}

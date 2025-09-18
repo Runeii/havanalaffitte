@@ -1,0 +1,47 @@
+<section id="work">
+	<div class="container-fluid">
+		<div class="row">
+			{% for project in craft.entries.projects.find() %}
+				{% for image in project.images %}
+				<div class="col-xs-4 col-md-3 col-lg-2 all{% for category in project.category %} {{ category.slug }}{% endfor %}">
+					<div class="image_placeholder">
+						<img alt="{{ project.title}}" data-hover-text="{% if project.multilineTitle %}{{ project.multilineTitle | nl2br }}{% else %}{{ project.title }}{% endif %}" data-original-src-width="{{ image.width }}" data-original-src-height="{{ image.height }}" data-original-src="{{ image.url }}"" data-src="{{ image.getUrl('thumbnail') }}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=" class="lazyload image_thumb lightbox-include">
+					</div>
+				</div>
+				{% endfor %}
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+<aside id="lightbox_header">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-10">
+				<span id="lightbox_caption"></span>
+			</div>
+			<div class="col-xs-2 text-right">
+				<span id="lightbox_close">Close</span>
+			</div>
+		</div>
+	</div>
+</aside>
+
+<aside id="lightbox_footer">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-6">
+				<span id="lightbox_prev">Back</span>
+			</div>
+			<div class="col-xs-6 text-right">
+				<span id="lightbox_next">Forth</span>
+			</div>
+		</div>
+	</div>
+</aside>
+
+<aside id="lightbox_intro">
+	<div class="center text-center text-xl">
+		<span id="lightbox_title"></span>
+	</div>
+</aside>

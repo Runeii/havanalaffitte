@@ -1,0 +1,25 @@
+Options +Indexes
+IndexIgnoreReset ON
+IndexIgnore cgi-bin
+IndexOptions SuppressColumnSorting
+
+
+AddHandler application/x-httpd-alt-php73___lsphp .php
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	# Send would-be 404 requests to Craft
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_URI} !^/(favicon\.ico|apple-touch-icon.*\.png)$ [NC]
+	RewriteRule (.+) index.php?p=$1 [QSA,L]
+</IfModule>
+AddHandler application/x-httpd-alt-php73___lsphp .php
+# BEGIN ANSIBLE MANAGED BLOCK
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_HOST} addon-havanalaffitte-com.gh-33202.dummy$
+RewriteRule ^(.*)$ "http://gh-33202.dummy/404" [R=301,L]
+</IfModule>
+# END ANSIBLE MANAGED BLOCK
+DirectoryIndex index.html index.php index.htm index.shtm index.shtml default.html

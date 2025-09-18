@@ -1,0 +1,40 @@
+//Base
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+	margin: 0px;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'HelveticaBold',Helvetica,Arial,sans-serif; 
+	font-weight: bold;
+	font-size: $fontSize - 3;
+	font-feature-settings:"kern" 1;
+  	font-kerning: normal;
+
+	@include breakpoint(tablet) {
+		font-size: $fontSize;
+	}
+}
+
+h1, h2, h3, h4, h5 {
+	font-size: $fontSize - 3;
+	@include breakpoint(tablet) {
+		font-size: $fontSize;
+	}
+}
+
+@font-face {
+        font-family: "HelveticaBold";
+        src: url('fonts/helvetica-bold-webfont.eot');
+        src: url('fonts/helvetica-bold-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/helvetica-bold-webfont.svg#helveticabold') format('svg'),
+        url('fonts/helvetica-bold-webfont.woff') format('woff'),
+        url('fonts/helvetica-bold-webfont.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+}

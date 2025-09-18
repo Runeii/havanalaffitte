@@ -1,0 +1,60 @@
+{% extends "_layout" %}
+
+{% block content %}
+<section id="information">
+	<div class="tabs container-fluid">
+
+		<div class="tab tab-bio">
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<h2 class="tab-title text-xl no-margin">{{ entry.bioTitle }}</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
+					<div class="content">
+						{{ entry.bio }}
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		<div class="tab tab-clients">
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<h2 class="tab-title text-xl no-margin">{{ entry.clientsTitle }}</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
+					<div class="content">
+						{% for block in entry.clients %}
+						<h4 class="no-margin"><u>{{ block.listTitle}}</u></h4>
+						<p>{{ block.listContent | nl2br }}</p>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+
+		<div class="tab tab-contact">
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<h2 class="tab-title text-xl no-margin">{{ entry.contactTitle }}</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-3 col-md-offset-5">
+					<div class="content">
+						{{ entry.contact }}
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+{% endblock %}

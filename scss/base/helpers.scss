@@ -1,0 +1,67 @@
+//Helpers
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-caps {
+	text-transform: uppercase;
+}
+
+.text-italic {
+	font-style: italic;
+}
+
+.text-bold {
+	font-weight: bold;
+}
+
+.text-xl {
+	font-size: 11vw;
+	line-height: 12vw;
+
+	@include breakpoint(tablet) {
+		font-size: 10vw;
+		line-height: 11vw;
+	}
+
+	@include breakpoint(desktoplarge) {
+		font-size: 150px;
+		line-height: 155px;
+	}
+}
+
+.text-indent {
+	p {
+		margin: 0px;
+		text-indent: 3em;
+
+		&:first-child {
+			text-indent: 0px;
+		}
+	}
+}
+
+a {
+	color: inherit;
+}
+
+p, ul {
+	margin-top: 0px;
+	margin-bottom: 1em;
+
+	&:last-child {
+		margin-bottom: 0px;
+	}
+}
+
+.no-margin {
+	margin: 0px;
+}

@@ -1,0 +1,43 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+	<link rel="home" href="{{ siteUrl }}" />
+	<link rel="stylesheet" href="{{ siteUrl }}css/style.css" />
+
+	{# Site Meta #}
+	<meta property="description" content="{{ siteMeta.description }}">
+
+	{# Facebook Meta #}
+	<meta property="og:title" content="{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}">
+	<meta property="og:description" content="{{ siteMeta.description }}">
+	<meta property="og:image" content="{% set socialImage = siteMeta.image | first %}{{ socialImage.url }}">
+	<meta property="og:url" content="{{ craft.request.url }}">
+	
+	{# Twitter #}
+	<meta name="twitter:title" content="{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}">
+	<meta name="twitter:description" content="{{ siteMeta.description }}">
+	<meta name="twitter:image" content="{{ socialImage.url }}">
+	<meta name="twitter:card" content="summary_large_image">
+	
+</head>
+
+<body>
+	{% include 'snippets/header' %}
+	{% block content %}{% endblock %}
+	<script src="{{ siteUrl }}js/production.min.js"></script>
+</body>
+</html>

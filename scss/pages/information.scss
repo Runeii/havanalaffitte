@@ -1,0 +1,58 @@
+// Information
+#information {
+	.container-fluid {
+		max-width: 1450px;
+		margin: 0 auto;
+	}
+}
+.tab {
+	h2 {
+		cursor: pointer;
+		display: inline-block;
+	}
+	.content {
+		padding: $gutter 0px;
+		display: none;
+	}
+}
+.tab-bio {
+	.content {
+		@include breakpoint(tablet) {
+			column-count: 2;
+		}
+	}
+	h2 {
+		&:hover {
+			color: #ff0099;
+			text-shadow: 0px 0px 10px rgba(150, 150, 150, 1);
+		}
+	}
+}
+.tab-clients {
+	.content {
+		column-count: 2;
+		@include breakpoint(tablet) {
+			column-count: 4;
+		}
+	}
+	h2 {
+		&:hover {
+			color: yellow;
+			text-shadow: 0px 0px 10px rgba(150, 150, 150, 1);
+		}
+	}
+}
+.tab-contact {
+	.content {
+		padding-bottom: 100px;
+	}
+	a {
+		text-decoration: none;
+	}
+	h2 {
+		&:hover {
+			color: #39FF14;
+			text-shadow: 0px 0px 10px rgba(150, 150, 150, 1);
+		}
+	}
+}

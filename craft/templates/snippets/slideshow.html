@@ -1,0 +1,23 @@
+<section id="slideshow">
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			{% for block in entry.slideshow.blocks %}
+			<div class="swiper-slide{% if block.turnTextWhite %} white{% endif %}">
+				{% set image = block.image.first() %}
+				<div class="slide_image swiper-lazy" style="background-size: {{ block.fitting }};" data-background="{{ image.url }}"></div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="title">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 text-center">
+					<h1 class="no-margin text-xl">{{ siteName }}</h1>
+					{% if entry.tagline %}<h2 class="no-margin">{{ entry.tagline }}</h2>{% endif %}
+				</div>
+			</div>
+		</div>
+		<h1>
+	</div>
+</section>
