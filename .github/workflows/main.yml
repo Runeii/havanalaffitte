@@ -37,18 +37,14 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        protocol: ftp
+        protocol: sftp
         port: 21
         local-dir: ./
-        server-dir: /
+        server-dir: /var/www/html/
         exclude: |
           **/.git*
           **/.git*/**
-          **/node_modules/**
-          **/.DS_Store
-          **/Thumbs.db
           **/.env*
-          **/README.md
           **/.github/**
         
     - name: Deployment completed
